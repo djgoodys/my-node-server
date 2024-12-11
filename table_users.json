@@ -1,0 +1,36 @@
+[
+    {
+        "id": "0",
+        "username": "dj",
+        "password": "relays",
+        "email": "djgoodys@gmail.com",
+        "admin": "yes",
+        "createdAt":"2024-12-07T22:14:40.946+00:00"
+    },
+    {
+        "id": "1",
+        "username": "gb",
+        "password": "1234",
+        "email": "glennbutler@whoknows.net",
+        "admin": "yes",
+        "backup_folder":"hard_rock",
+        "createdAt":"2024-12-07T22:14:46.946+00:00"
+    },
+    {
+        "id": "2",
+        "username": "rc",
+        "password": "123",
+        "email": "rc@gmail.com",
+        "admin": "false",
+        "createdAt":"2024-12-07T22:12:40.946+00:00"
+    },
+    {
+        "id": "3",
+        "username": "rl",
+        "password": "1234",
+        "email": "rl@whoknows.net",
+        "admin": "yes",
+        "backup_folder":"hard_rock",
+        "createdAt":"2024-12-07T22:34:46.946+00:00"
+    }
+]
