@@ -18,3 +18,8 @@ app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
 
+app.use('/api', (req, res, next) => {
+  console.log('API route accessed: ' + req.url);
+  next();
+}, apiRoutes);
+
