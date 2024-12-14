@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 const apiRoutes = require('./routes/ap.js');
 require('./config/db.js');  // Import the db configuration to connect to MongoDB
 
