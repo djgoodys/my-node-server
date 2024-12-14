@@ -1,0 +1,1 @@
+mongodb+srv://djgoodys:<db_password>@fmdb-cluster.4c2dt.mongodb.net/?retryWrites=true&w=majority&appName=fmdb-cluster

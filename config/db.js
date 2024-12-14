@@ -1,7 +1,33 @@
 const mongoose = require('mongoose');
 
 // Connection URI for MongoDB
-const dbURI = 'mongodb://localhost:27017/fmdb';
+////const dbURI = 'mongodb://localhost:27017/fmdb';
+//const dbURImongodb+srv://djgoodys:<db_password>@fmdb-cluster.4c2dt.
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const dbURI = "mongodb+srv://djgoodys:relays82@fmdb-cluster.4c2dt.mongodb.net/?retryWrites=true&w=majority&appName=fmdb-cluster";
+
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(dbURI, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
 
 // Configuration options for Mongoose (without deprecated options)
 const options = {
