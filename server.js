@@ -3,7 +3,7 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000;
 const apiRoutes = require('./routes/ap.js');
-require('./config/db.js');  // Import the db configuration to connect to MongoDB
+require('./config/db2.js');  // Import the db configuration to connect to MongoDB
 
 app.use(express.json());
 app.use(cors());  // Enable CORS for all routes

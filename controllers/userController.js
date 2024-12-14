@@ -14,29 +14,21 @@ const admin = req.query.admin || req.body.admin;
 
 switch(action){
   case "login":
-    try {
+  try{
       let response = '';
       const { username, password } = req.body;
-      const user = await User.findOne({ username });
-      
-      if (!user) {
-        console.error('No username given');
-        response = response +  '<h1>No username supplied</h1>';
-        res.status(401).json({ message: 'no username given' });
-      }
-  
-      if (user) {
-        response = response +  `<h1>User ${username}was found!</h1>`;
-      } else 
-      { 
-        response = response +  '<h1>User not found!</h1>';
-  
-      }
-      if(user && user.password == password){
-        res.json({ user })
+      const user = await User.find({ username });
+      if (user.length > 0) {
+        res.json({user});
+        user.forEach(user => {
+          console.log("name: " + user.username + " password:" + user.password);
+        })
       } else {
-        res.json({ login: 'unsuccessfull' })
+        console.log("No users found with that username");
       }
+      
+      //res.json({user});
+     
     
     } catch (err) {
       console.error('Error during login:', err);

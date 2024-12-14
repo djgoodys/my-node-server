@@ -1,26 +1,26 @@
 [
     {
-        "_id": "1",
+        "id": "1",
         "type": "Paper",
         "trackable": "yes"
     },
     {
-        "_id": "2",
+        "id": "2",
         "type": "Extended 2 inch",
         "trackable": "yes"
     },
     {
-        "_id": "3",
+        "id": "3",
         "type": "Extended 12 inch",
         "trackable": "yes"
     },
     {
-        "_id": "4",
+        "id": "4",
         "type": "Cut Media",
         "trackable": "no"
     },
     {
-        "_id": "5",
+        "id": "5",
         "type": "Washable",
         "trackable": "no"
     }
