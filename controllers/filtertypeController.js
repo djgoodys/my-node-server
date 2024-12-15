@@ -62,7 +62,7 @@ async function manageFilterTypes(req, res) {
         if (!ID) {
           return res.status(400).send('ID is required');
         }
-        await Filtertype.findByIdAndDelete(ID);
+        await Filtertype.findByIdAndDelete({_id:ID});
         const filtertypes = await Filtertype.find({});
         res.json(filtertypes);
       } catch (err) {
