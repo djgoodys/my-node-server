@@ -91,17 +91,14 @@ try {
 
     case "getFilterById":
       try {
-        if (!mongoose.Types.ObjectId.isValid(ID)) {
-          return res.status(400).send('Invalid ID format');
-        }
-        
+
         const filters = await Filters.findById(ID);
         if (!filters) {
           return res.status(404).json({ message: ID + ' Filter not found' });
         }
         res.json(filters);
       } catch (err) {
-        res.status(500).send(err);
+        res.status(500).send(err.message);
       }
       break;
   };
