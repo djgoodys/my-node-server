@@ -44,7 +44,6 @@ async function manageFilterTypes(req, res) {
       break;
 
     case "update-filtertype":
-      const ID = req.params.id;
       try {
         filtertypes = await Filtertype.findByIdAndUpdate(ID, req.body, { new: true });
         if (!filtertypes) {
@@ -59,6 +58,7 @@ async function manageFilterTypes(req, res) {
 
     case "deleteFiltertypes":
       try {
+        console.log("ID"= ID);
         if (!ID) {
           return res.status(400).send('ID is required');
         }
