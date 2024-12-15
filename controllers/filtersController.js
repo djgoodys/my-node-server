@@ -95,9 +95,9 @@ try {
           return res.status(400).send('Invalid ID format');
         }
         
-        const filters = await Filters.findById(mongoose.Types.ObjectId(ID));
+        const filters = await Filters.findById(ID);
         if (!filters) {
-          return res.status(404).json({ message: 'Filter not found' });
+          return res.status(404).json({ message: ID + ' Filter not found' });
         }
         res.json(filters);
       } catch (err) {
