@@ -4,12 +4,11 @@ async function manageFilterTypes(req, res) {
 
   const action = req.query.action || req.body.action;
   const ID = req.query.id;
+  let filtertypes = {};
 switch(action){
   case "get-all-filter-types":
   try {
-    const filtertypes = await Filtertype.find({});
-    //const units = filtertypes.map(unit => unit.unit_name);
-    //res.send("filtertypes length="+ filtertypes.length)
+    filtertypes = await Filtertype.find({});
     res.json(filtertypes);
   } catch (err) {
     res.status(500).send(err);
@@ -18,7 +17,7 @@ break;
 
 case "getFiltertypesById":
   try {
-    const filtertypes = await Filtertype.findById(ID);
+    filtertypes = await Filtertype.findById(ID);
     if (!filtertypes) {
       return res.status(404).json({ message: 'Filtertype not found' });
     }
@@ -32,7 +31,8 @@ case "createFiltertypes":
   try {
     const newFiltertypes = new Filtertype(req.body);
     const savedFiltertypes = await newFiltertypes.save();
-    res.status(201).json(savedFiltertypes);
+    filtertypes = await Filtertype.find({});
+    res.json(filtertypes);
   } catch (error) {
     console.error('Error creating filtertypes:', error);
     res.status(500).json({ message: error.message });
@@ -42,7 +42,7 @@ case "createFiltertypes":
 case "update-filtertype":
   const ID = req.params.id;
   try {
-    const filtertypes = await Filtertype.findByIdAndUpdate(ID, req.body, { new: true });
+    filtertypes = await Filtertype.findByIdAndUpdate(ID, req.body, { new: true });
     if (!filtertypes) {
       return res.status(404).json({ message: 'Filtertype not found' });
     }
