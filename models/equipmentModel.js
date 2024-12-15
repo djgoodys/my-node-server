@@ -6,6 +6,9 @@ const equipmentSchema = new Schema({
     _id: {
        //can't everide default _id from mongoose
     },
+    filter_id {
+        type: String
+    },
     unit_name: {
         type: String,
         unique: true
