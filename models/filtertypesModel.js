@@ -9,8 +9,7 @@ type: {
     unique: true
 },
 trackable: {
-    type: String,
-    unique: true
+    type: String
 } 
 });
 
