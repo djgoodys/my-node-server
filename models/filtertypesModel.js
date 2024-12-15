@@ -3,10 +3,7 @@ const Schema = mongoose.Schema;
 
 // Define the schema for the filtertype
 const filtertypeSchema = new Schema({
-id: {
-    type: Number,
-    unique: true
-  },
+
 type: {
     type: String,
     unique: true
@@ -14,7 +11,7 @@ type: {
 trackable: {
     type: String,
     unique: true
-}
+} 
 });
 
 // Create the model from the schema
