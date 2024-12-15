@@ -36,7 +36,7 @@ case "createFiltertypes":
     });
     const savedFiltertype = await newFiltertype.save();
     filtertypes = await Filtertype.find({});
-    res.json({ created: savedFiltertype, all: filtertypes });
+    res.json(filtertypes);
   } catch (error) {
     console.error('Error creating filtertypes:', error);
     res.status(500).json({ message: error.message });
