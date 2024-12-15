@@ -95,7 +95,7 @@ try {
       try {
         const filters = await Filters.findById(ID);
         if (!filters) {
-          return res.status(404).json({ message: 'Filtertype not found' });
+          return res.status(404).json({ message: 'Filter not found' });
         }
         res.json(filters);
       } catch (err) {
