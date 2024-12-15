@@ -18,7 +18,7 @@ const getTodayDate = () => {
 async function manageFilters(req, res) {
   
   const action = req.query.action || req.body.action;
-  const Id = req.query.id;
+  const ID = req.query.id;
   switch(action){
     case "get-all-filters":
   try {
@@ -53,7 +53,7 @@ case "update-filter":
   const today = getTodayDate();
 
   try {
-    const filters = await Filters.findByIdAndUpdate(Id, {
+    const filters = await Filters.findByIdAndUpdate(ID, {
         filter_size:filter_size,
         filter_type:filter_type,
         filter_count:filter_count,
@@ -63,7 +63,7 @@ case "update-filter":
         pn: pn,
         date_updated: today
     });
-    if(!filters){res.send(`No filters found with id${Id}`);
+    if(!filters){res.send(`No filters found with id${ID}`);
     } else {
     const allfilters = await Filters.find({});
     res.json(allfilters);
@@ -76,19 +76,32 @@ break;
 case "delete-filter":
 
 try {
-  const deletedFilter = await Filters.findByIdAndDelete(Id);
+  const deletedFilter = await Filters.findByIdAndDelete(ID);
   
   if (deletedFilter) {
     const allfilters = await Filters.find({});
     res.json(allfilters);
   } else {
-    res.status(404).send(`Filter with id: ${Id} was not found`);
+    res.status(404).send(`Filter with id: ${ID} was not found`);
   }
 } catch (err) {
   return res.status(500).send(err.message);
 }
 
     break;
+
+
+    case "getFilterById":
+      try {
+        const filters = await Filters.findById(ID);
+        if (!filters) {
+          return res.status(404).json({ message: 'Filtertype not found' });
+        }
+        res.json(filters);
+      } catch (err) {
+        res.status(500).send(err);
+      }
+      break;
   };
 
 };
