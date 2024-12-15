@@ -29,10 +29,14 @@ break;
 
 case "createFiltertypes":
   try {
-    const newFiltertypes = new Filtertype(req.body);
-    const savedFiltertypes = await newFiltertypes.save();
+    const { type, trackable } = req.query;
+    const newFiltertype = new Filtertype({
+      type: type,
+      trackable: trackable
+    });
+    const savedFiltertype = await newFiltertype.save();
     filtertypes = await Filtertype.find({});
-    res.json(filtertypes);
+    res.json({ created: savedFiltertype, all: filtertypes });
   } catch (error) {
     console.error('Error creating filtertypes:', error);
     res.status(500).json({ message: error.message });
