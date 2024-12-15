@@ -96,7 +96,7 @@ date.setMonth(date.getMonth() + 3);
           }
         }
       ]);
-      console.log("equipmentWithFilters="+ equipmentWithFilters);
+      res.json(equipmentWithFilters);
       
       
       break;
