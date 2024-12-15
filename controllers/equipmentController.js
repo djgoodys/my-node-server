@@ -86,12 +86,19 @@ date.setMonth(date.getMonth() + 3);
 
   switch(action){
     case "get-all-equipment":
-      try {
-        equipment = await Equipment.find({});
-        res.json(equipment);
-      } catch (err) {
-        res.status(500).send(err);
-      }
+      const equipmentWithFilters = await Equipment.aggregate([
+        {
+          $lookup: {
+            from: 'filters',
+            localField: 'filter_id', // Field in Equipment
+            foreignField: '_id', // Field in Filters
+            as: 'filterDetails' // Name of the array to add the results
+          }
+        }
+      ]);
+      console.log("equipmentWithFilters="+ equipmentWithFilters);
+      
+      
       break;
       
       case "add-all-tasks":
