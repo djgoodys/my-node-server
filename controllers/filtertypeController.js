@@ -58,12 +58,17 @@ case "update-filtertype":
 
 
 case "deleteFiltertypes":
-  Filtertype.findByIdAndRemove(ID, (err, filtertypes) => {
-    if (err) {
-      return res.status(500).send(err);
-    }
-    res.json({ message: 'Filtertype successfully deleted', filtertypes });
-  });
+  try{
+  if (!ID) {
+    return res.status(400).send('ID is required');
+  }
+  await Filtertype.findByIdAndRemove(ID);
+    const filtertypes = await Filtertype.find({});
+    res.json(filtertypes);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
+
   break;
 }
 }
