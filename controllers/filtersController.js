@@ -18,13 +18,11 @@ const getTodayDate = () => {
 async function manageFilters(req, res) {
   
   const action = req.query.action || req.body.action;
-  const ID = req.query.id;
+  const ID = req.query.id|| req.body.id;
   switch(action){
     case "get-all-filters":
   try {
     const filters = await Filters.find({});
-    //const units = filters.map(unit => unit.unit_name);
-    //res.send("filters length="+ filters.length)
     res.json(filters);
   } catch (err) {
     res.status(500).send(err);
@@ -93,6 +91,7 @@ try {
 
     case "getFilterById":
       try {
+        console.log("getFilterById id="+ ID);
         const filters = await Filters.findById(ID);
         if (!filters) {
           return res.status(404).json({ message: 'Filter not found' });
