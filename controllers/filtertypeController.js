@@ -58,7 +58,7 @@ async function manageFilterTypes(req, res) {
 
     case "deleteFiltertypes":
       try {
-        console.log("ID"= ID);
+        console.log("ID="+ ID);
         if (!ID) {
           return res.status(400).send('ID is required');
         }
