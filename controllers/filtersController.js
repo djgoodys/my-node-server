@@ -1,4 +1,5 @@
 const Filters= require('../models/filtersModel'); 
+const mongoose = require('mongoose');
 const formatDateString = (dateString) => {
   const date = new Date(dateString);
   const year = date.getFullYear();
