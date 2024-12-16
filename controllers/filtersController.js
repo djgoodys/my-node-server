@@ -91,16 +91,13 @@ try {
 
 
     case "getFilterById":
-      //f = Number(ID);
-      //const fid = new mongoose.Types.ObjectId(f)
-      //console.log("typeof="+typeof(fid))
-      //console.log('Converted ID:', fid);
-        //const filter = await Filters.findById(fid)
-        const filter = await Filters.findOne({_id: ID})
+      const size = req.query.size;
+      const type = req.query.type;
+        const filter = await Filters.findOne({filter_size:size, filter_type:type})
         .then(filter => {
         if (!filter) {
-          return res.status(404).json({ message: ID + ' Filter not found' });
-          console.log("Filter with id:" + ID + " was not found");
+          return res.status(404).json({ message: ID + "Filter size:" + size + " & type: " + type +" was not found" });
+          console.log("Filter size:" + size + " & type: " + type +" was not found");
         }
         res.json([filter]);
     })
