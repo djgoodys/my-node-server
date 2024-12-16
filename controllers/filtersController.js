@@ -92,7 +92,7 @@ try {
 
     case "getFilterById":
       
-        await Filters.find({_id:ID})
+        await Filters.findById({_id:ID})
         .then(filter => {
         if (!filter) {
           return res.status(404).json({ message: ID + ' Filter not found' });
