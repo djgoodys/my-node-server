@@ -91,7 +91,7 @@ try {
 
 
     case "getFilterById":
-      const fid = new mongoose.Types.ObjectId(ID)
+      const fid = new mongoose.Types.ObjectId(ID).exec();
       console.log("typeof="+typeof(fid))
       console.log('Converted ID:', fid);
         const filter = await Filters.findById(fid)
