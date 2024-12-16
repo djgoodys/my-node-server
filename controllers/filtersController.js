@@ -91,14 +91,14 @@ try {
 
 
     case "getFilterById":
-      
-        await Filters.findById(ID)
+      const fid = new mongoose.Types.ObjectId(ID)
+        const filter = await Filters.findById(fid)
         .then(filter => {
         if (!filter) {
           return res.status(404).json({ message: ID + ' Filter not found' });
           console.log("Filter with id:" + ID + " was not found");
         }
-        res.json(filter);
+        res.json([filter]);
     })
      .catch (err => {
         res.status(500).send(err.message);
