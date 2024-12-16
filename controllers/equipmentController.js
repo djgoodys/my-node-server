@@ -181,7 +181,7 @@ date.setMonth(date.getMonth() + 3);
 
         const filtered_equipment = await Equipment.find({
           $or: [
-            { _id: { $regex: regex } },
+            { id: { $regex: regex } },
             { unit_name: { $regex: regex } },
             { location: { $regex: regex } },
             { area_served: { $regex: regex } },
