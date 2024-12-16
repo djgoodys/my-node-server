@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const storagesSchema = new Schema({
 _id: {
+    type: Schema.Types.ObjectId, 
+    required: true 
+},
+id: {
     type: String
 },
 location: {

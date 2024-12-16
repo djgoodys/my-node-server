@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+ObjectId = Schema.ObjectId;
 // Define the schema for the filtertype
 const filtersSchema = new Schema({
 _id: {
-    type: String
+    type: Schema.Types.ObjectId, 
+    required: true
   },
 filter_size: {
     type: String
