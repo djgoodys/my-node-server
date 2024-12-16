@@ -3,9 +3,8 @@ const Schema = mongoose.Schema;
 ObjectId = Schema.ObjectId;
 // Define the schema for the filtertype
 const filtersSchema = new Schema({
-_id: {
-    type: Schema.Types.ObjectId, 
-    required: true
+id: {
+    type: String
   },
 filter_size: {
     type: String

@@ -3,9 +3,8 @@ const Schema = mongoose.Schema;
 
 // Define the schema for the equipment
 const equipmentSchema = new Schema({
-    _id: {
-        type: Schema.Types.ObjectId, 
-        required: true
+    id: {
+        type: String
     },
     filter_id: {
         type: String
