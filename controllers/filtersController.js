@@ -91,12 +91,12 @@ try {
 
 
     case "getFilterById":
-      f = Number(ID);
-      const fid = new mongoose.Types.ObjectId(f)
+      //f = Number(ID);
+      //const fid = new mongoose.Types.ObjectId(f)
       //console.log("typeof="+typeof(fid))
       //console.log('Converted ID:', fid);
         //const filter = await Filters.findById(fid)
-        const filter = await Filters.findById({fid})
+        const filter = await Filters.findOne({_id: ID})
         .then(filter => {
         if (!filter) {
           return res.status(404).json({ message: ID + ' Filter not found' });
