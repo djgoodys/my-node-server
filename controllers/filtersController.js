@@ -92,7 +92,7 @@ try {
 
     case "getFilterById":
       
-        const filterid = mongoose.Types.ObjectId(ID);
+        const filterid = new mongoose.Types.ObjectId.createFromHexString(ID)
         await Filters.findById(filterid)
         .then(filter => {
         if (!filter) {
