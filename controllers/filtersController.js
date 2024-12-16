@@ -92,11 +92,11 @@ try {
     case "getFilterById":
       try {
 
-        const filters = await Filters.findById(ID);
+        const filter = await Filters.find({_id:ID});
         if (!filters) {
           return res.status(404).json({ message: ID + ' Filter not found' });
         }
-        res.json(filters);
+        res.json(filter);
       } catch (err) {
         res.status(500).send(err.message);
       }
