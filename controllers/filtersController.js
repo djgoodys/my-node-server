@@ -92,8 +92,7 @@ try {
 
     case "getFilterById":
       
-        const filterid = new mongoose.Types.ObjectId.createFromHexString(ID)
-        await Filters.findById(filterid)
+        await Filters.find({id:ID})
         .then(filter => {
         if (!filter) {
           return res.status(404).json({ message: ID + ' Filter not found' });
