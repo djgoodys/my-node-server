@@ -93,7 +93,7 @@ try {
       try {
 
         const filter = await Filters.find({_id:ID});
-        if (!filters) {
+        if (!filter) {
           return res.status(404).json({ message: ID + ' Filter not found' });
         }
         res.json(filter);
