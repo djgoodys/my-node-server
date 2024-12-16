@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 // Define the schema for the equipment
 const equipmentSchema = new Schema({
     _id: {
-       //can't everide default _id from mongoose
+        type: Schema.Types.ObjectId, 
+        required: true
     },
     filter_id: {
         type: String
