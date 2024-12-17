@@ -1,14 +1,14 @@
 [
     {
-        "_id": "1",
+        "id": "1",
         "location": "mezz filter rm"
     },
     {
-        "_id": "2",
+        "id": "2",
         "location": "conv filter rm"
     },
     {
-        "_id": "3",
+        "id": "3",
         "location": "love pump rm"
     }
 ]
