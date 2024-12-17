@@ -6,10 +6,9 @@
       "use": "@vercel/node"
     }
   ],
-  "install": "npm install mongoose mongoose-auto-increment jsonwebtoken bcrypt cors --legacy-peer-deps",
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/(.*)",
       "dest": "/server.js"
     }
   ]
