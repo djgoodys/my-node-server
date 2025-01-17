@@ -86,7 +86,7 @@ date.setMonth(date.getMonth() + 3);
 
   switch(action){
     case "get-all-equipment":
-      const equipmentWithFilters = await Equipment.aggregate([
+      let equipmentWithFilters = await Equipment.aggregate([
         {
           $lookup: {
             from: 'filters',
@@ -173,6 +173,30 @@ date.setMonth(date.getMonth() + 3);
         } catch (err) {
           res.status(500).send(err);
         }
+        break;
+
+      case "sort":
+          if(req.query.sortby === "today"){
+            const today = new Date();
+            const yyyy = today.getFullYear();
+            const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+            const dd = String(today.getDate()).padStart(2, '0');
+            const formattedToday = `${yyyy}-${mm}-${dd}`;
+            console.log("formattedToday="+formattedToday);
+            equipment = await Equipment.find({filters_due: formattedToday});
+            res.json(equipment);
+          }
+          if(req.query.sortby === "NORMAL"){
+            const today = new Date();
+            equipment = await Equipment.find({});
+            res.json(equipment);
+          }
+          if (req.query.sortby == '1' || req.query.sortby == "-1") {
+          let sortby = parseInt(req.query.sortby, 10);
+          equipment = await Equipment.find({}).sort({filters_due:sortby});
+          res.json(equipment);
+        }
+    
         break;
 
       case "search":
